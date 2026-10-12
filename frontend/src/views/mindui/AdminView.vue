@@ -12,16 +12,16 @@ import type { AccountRow } from '../../types/account'
 
 import WCMenuStrip from '../../components/mindui/WCMenuStrip.vue'
 import WCActionBar from '../../components/mindui/WCActionBar.vue'
-import WMSetupToolModal from '../../components/mindui/WMSetupToolModal.vue'
-import WMSetupInteractModal from '../../components/mindui/WMSetupInteractModal.vue'
-import WMSetupViewModal from '../../components/mindui/WMSetupViewModal.vue'
+import MindSetupToolModal from '../../components/mindui/MindSetupToolModal.vue'
+import MindSetupInteractModal from '../../components/mindui/MindSetupInteractModal.vue'
+import MindSetupViewModal from '../../components/mindui/MindSetupViewModal.vue'
 import WCAddAccountModal from '../../components/mindui/WCAddAccountModal.vue'
 import WCAddAccountReviewModal from '../../components/mindui/WCAddAccountReviewModal.vue'
 import WCUpdateFieldModal from '../../components/mindui/WCUpdateFieldModal.vue'
 import WCTrashModal from '../../components/mindui/WCTrashModal.vue'
 import WCContactModal from '../../components/mindui/WCContactModal.vue'
 import WCUtilsModal from '../../components/mindui/WCUtilsModal.vue'
-import WMCategoryModal from '../../components/mindui/WMCategoryModal.vue'
+import MindCategoryModal from '../../components/mindui/MindCategoryModal.vue'
 
 // ── Stores ──────────────────────────────────────────
 const accountsStore = useAccountsStore()
@@ -388,13 +388,13 @@ onBeforeUnmount(() => document.removeEventListener('mouseup', onMouseup))
     />
 
     <!-- MODALS -->
-    <WMSetupToolModal :model-value="activeModal === 'settings'" @update:model-value="(v: boolean) => !v && (activeModal = null)" />
-    <WMSetupInteractModal :model-value="activeModal === 'interaction'" @update:model-value="(v: boolean) => !v && (activeModal = null)" />
-    <WMSetupViewModal :model-value="activeModal === 'display'" @update:model-value="(v: boolean) => !v && (activeModal = null)" />
+    <MindSetupToolModal :model-value="activeModal === 'settings'" @update:model-value="(v: boolean) => !v && (activeModal = null)" />
+    <MindSetupInteractModal :model-value="activeModal === 'interaction'" @update:model-value="(v: boolean) => !v && (activeModal = null)" />
+    <MindSetupViewModal :model-value="activeModal === 'display'" @update:model-value="(v: boolean) => !v && (activeModal = null)" />
     <WCTrashModal :model-value="activeModal === 'trash'" @update:model-value="(v: boolean) => !v && (activeModal = null)" />
     <WCContactModal :model-value="activeModal === 'contact'" @update:model-value="(v: boolean) => !v && (activeModal = null)" />
     <WCUtilsModal :model-value="activeModal === 'utils'" @update:model-value="(v: boolean) => !v && (activeModal = null)" />
-    <WMCategoryModal :model-value="activeModal === 'category'" @update:model-value="(v: boolean) => !v && (activeModal = null)" />
+    <MindCategoryModal :model-value="activeModal === 'category'" @update:model-value="(v: boolean) => !v && (activeModal = null)" />
     <WCAddAccountModal
       :model-value="activeModal === 'add'"
       :categories="categoriesStore.categories"

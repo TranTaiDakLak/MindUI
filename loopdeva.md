@@ -1,4 +1,4 @@
-# WMK-UI Redesign — Autonomous 3-Dev Loop
+# MindUI Redesign — Autonomous 3-Dev Loop
 
 Đây là kịch bản cho `/loop loopdeva.md đọc và loop`. Mỗi lần được đánh thức,
 orchestrator (phiên hiện tại) đọc TOÀN BỘ file này — đặc biệt phần
@@ -1419,7 +1419,7 @@ tự ý dừng sớm hơn.
     thực ra **chưa bao giờ chạy qua `components/common/**`**. Đây là public
     API của lib (export `lib.ts`), ưu tiên cao nếu round sau muốn tiếp tục
     mục A.
-  - `components/mindui/**` — **10/10 file** có hit (toàn bộ `WC*`/`WM*`
+  - `components/mindui/**` — **10/10 file** có hit (toàn bộ `WC*`/`Mind*`
     modal/bar component).
   - `components/data/**` — **9/9 file** có hit (`DataGridPro`, `Kanban`,
     `Timeline`, `FilterBuilder`, v.v.).
@@ -1683,7 +1683,7 @@ tự ý dừng sớm hơn.
   `gap:12px→space-3`, `padding:8px 0→space-2 0`, `padding:10px 12px→10px
   space-3`; `WCAddAccountModal.vue` inline `style="margin-top:12px"→
   style="margin-top:var(--wx-space-3)"` (1 trong 2 inline style attr được
-  sanction); `WMSetupInteractModal.vue` `gap:6px 12px→6px space-3` (6
+  sanction); `MindSetupInteractModal.vue` `gap:6px 12px→6px space-3` (6
   off-grid giữ), `padding:1px 4px→1px space-1` (1 off-grid giữ).
 - **Off-grid + giá trị âm survive nguyên vẹn (verify đúng 4 case checklist
   yêu cầu)**: `DonutChart.vue:209` `gap: var(--wx-space-2) 20px` (20px lẻ

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 /**
  * BaseOptionRow — hàng chọn bật/tắt trong panel (danh sách cột, tuỳ chọn nạp lại…).
- * Port từ `wm-panel-item` + `wm-toggle` + `wm-radio` + `wm-panel-required` của MindAds.
+ * Port từ dòng tuỳ chọn trong panel (toggle / radio / nhãn "Bắt buộc") của MindAds.
  *
  * Cả hàng là vùng bấm; slot `leading` / `trailing` tự chặn click để không bật/tắt nhầm
  * (tay kéo, nút ghim…). Bàn phím: Space / Enter.
@@ -146,7 +146,7 @@ function toggle() {
 .wx-option-row--checked .wx-option-row__label { color: var(--wx-text-primary); }
 .wx-option-row__desc { font-size: var(--wx-fs-11); color: var(--wx-text-light); line-height: 1.35; }
 
-/* nhãn "Bắt buộc" — ấm, viết hoa, có viền (wm-panel-required) */
+/* nhãn "Bắt buộc" — ấm, viết hoa, có viền */
 .wx-option-row__badge {
   flex-shrink: 0;
   display: inline-flex;

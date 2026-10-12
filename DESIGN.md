@@ -2,6 +2,8 @@
 
 > Dense reference for Claude Code. Read when working on components, tokens, theming, or composables.
 > Do NOT read README.md — overlaps CLAUDE.md, humans only.
+>
+> **Brand gradient chuẩn** (cyan → xanh, trái → phải, mã cố định — không tự pha lại): `linear-gradient(90deg, #06b6d4 0%, #2583ff 45%, #1477f8 100%)` · glass 96%: `linear-gradient(90deg, rgba(6, 182, 212, 0.96) 0%, rgba(37, 131, 255, 0.96) 45%, rgba(20, 119, 248, 0.96) 100%)` → token `--wx-gradient-brand` / `--wx-gradient-brand-glass`. Chi tiết + lưu ý tương phản: §1.2.
 
 ---
 
@@ -32,6 +34,24 @@ All tokens are CSS variables. Source: `frontend/src/ui-system/foundations/tokens
 `bg` `header` `cta` `button`(brand→primary) `accent` `text` `divider` `success` `danger` `warning`
 
 **Mới (MindAds):** `primary` / `primary-hover` (nút chính "solid": brand-500→600 / 600→700, 135°) · `tile` (indigo→blue→cyan) · `tile-blue` `tile-green` `tile-amber` `tile-red` · `panel-head` (nền đầu panel: surface → xanh 4%) · `scanner` (thanh laser). Variant `flat` ép tất cả về solid.
+
+**Brand gradient CHUẨN — `brand` / `brand-glass`** (mã màu cố định, mọi dự án dùng MindUI lấy đúng giá trị này, không tự pha lại để tránh lệch màu). Chiều trái → phải, 90°:
+
+| Stop | Vị trí | Hex | rgba (bản glass) |
+|------|--------|-----|------------------|
+| Cyan | 0% | `#06b6d4` | `rgba(6, 182, 212, 0.96)` |
+| Blue | 45% | `#2583ff` | `rgba(37, 131, 255, 0.96)` |
+| Blue đậm | 100% | `#1477f8` | `rgba(20, 119, 248, 0.96)` |
+
+```css
+--wx-gradient-brand:       linear-gradient(90deg, #06b6d4 0%, #2583ff 45%, #1477f8 100%);
+--wx-gradient-brand-glass: linear-gradient(90deg, rgba(6, 182, 212, 0.96) 0%, rgba(37, 131, 255, 0.96) 45%, rgba(20, 119, 248, 0.96) 100%);
+```
+
+- TS: `gradients.brand` / `gradients.brandGlass` (`frontend/src/ui-system/tokens/gradients.ts`).
+- `brand-glass` = bản 96% opacity, dùng cho thanh/header đè lên nội dung hoặc kèm `backdrop-filter`.
+- Cố ý **không** tham chiếu `--wx-brand-*` → không đổi khi consumer re-skin; dark mode giữ nguyên; variant `flat` → `--wx-brand-primary`.
+- Tương phản chữ trắng: ~2.4:1 ở đầu cyan, ~3.6:1 ở 45%, ~4.2:1 ở cuối → chỉ đặt chữ trắng cỡ lớn/đậm hoặc icon (dùng `--wx-text-on-brand`); chữ nhỏ mang nghĩa dùng `--wx-gradient-primary`.
 
 ### 1.3 Spacing — 4pt grid (`--wx-space-*`)
 

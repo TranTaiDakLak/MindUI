@@ -7,6 +7,28 @@
 
 MindUI là bộ UI kit Vue 3 + Design System tách ra từ MindUI desktop. Mục tiêu: dùng được trên mọi nền tảng — Web app, Mobile shell, Desktop wrapper — mà không phụ thuộc backend cụ thể.
 
+## Brand gradient — mã màu chuẩn (đọc trước khi làm UI)
+
+Gradient thương hiệu MindUI: cyan → xanh, **trái → phải (90°)**. Mọi dự án dùng MindUI lấy **đúng** mã này, không tự pha lại để tránh lệch màu.
+
+```css
+/* đặc */
+background: linear-gradient(90deg, #06b6d4 0%, #2583ff 45%, #1477f8 100%);
+/* glass — 96% opacity, cho header/thanh đè lên nội dung */
+background: linear-gradient(90deg, rgba(6, 182, 212, 0.96) 0%, rgba(37, 131, 255, 0.96) 45%, rgba(20, 119, 248, 0.96) 100%);
+```
+
+| Stop | Hex | rgba (glass) |
+|------|-----|--------------|
+| 0% | `#06b6d4` | `rgba(6, 182, 212, 0.96)` |
+| 45% | `#2583ff` | `rgba(37, 131, 255, 0.96)` |
+| 100% | `#1477f8` | `rgba(20, 119, 248, 0.96)` |
+
+- Token: `var(--wx-gradient-brand)` / `var(--wx-gradient-brand-glass)` (`frontend/src/ui-system/foundations/tokens.css`) · TS: `gradients.brand` / `gradients.brandGlass`.
+- Trong MindUI dùng token, không hardcode lại mã; dự án ngoài MindUI thì copy nguyên chuỗi trên.
+- Chữ trắng trên gradient này chỉ ~2.4–4.2:1 → chỉ đặt chữ lớn/đậm hoặc icon; chữ nhỏ cần đọc dùng `--wx-gradient-primary`.
+- Chi tiết: `DESIGN.md` §1.2.
+
 ## Stack versions
 
 | Package | Version |

@@ -68,6 +68,14 @@
   /* Thanh loading dạng "laser" (LiquidLoader / indeterminate) */
   --wx-gradient-scanner: linear-gradient(to right, transparent, var(--wx-brand-accent), var(--wx-brand-500));
 
+  /* Gradient thương hiệu CHUẨN (cyan → xanh, 90°, trái → phải). Mã màu cố định — mọi dự án dùng MindUI lấy đúng
+     giá trị này, không tự pha lại. Cố ý KHÔNG tham chiếu --wx-brand-* để không lệch khi consumer re-skin; dark mode giữ nguyên.
+     Tương phản chữ trắng: ~2.4:1 ở đầu cyan, ~3.6:1 ở 45%, ~4.2:1 ở cuối → chỉ đặt chữ trắng cỡ lớn/đậm hoặc icon,
+     chữ nhỏ mang nghĩa thì dùng --wx-gradient-primary. */
+  --wx-gradient-brand: linear-gradient(90deg, #06b6d4 0%, #2583ff 45%, #1477f8 100%);
+  /* Bản 96% opacity — cho thanh/header nằm đè lên nội dung, hoặc kết hợp backdrop-filter (glass) */
+  --wx-gradient-brand-glass: linear-gradient(90deg, rgba(6, 182, 212, 0.96) 0%, rgba(37, 131, 255, 0.96) 45%, rgba(20, 119, 248, 0.96) 100%);
+
   /* ── Text (slate palette — khớp nguồn MindAds, đạt AA trên nền trắng) ── */
   --wx-text-primary: #0f172a;
   --wx-text-secondary: #475569;

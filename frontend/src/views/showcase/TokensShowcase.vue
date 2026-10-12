@@ -71,6 +71,7 @@ const spaceList = Array.from({ length: 13 }, (_, i) => ({
 const fsList = [10, 11, 12, 13, 14, 15, 16, 18, 20, 24, 28, 32, 40, 48, 64] as const
 
 const gradientList = [
+  'brand', 'brand-glass',
   'bg', 'header', 'cta', 'button', 'accent', 'text',
   'success', 'danger', 'warning',
   'primary', 'primary-hover', 'tile', 'tile-blue', 'tile-green', 'tile-amber', 'tile-red',

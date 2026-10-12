@@ -1,7 +1,7 @@
 <script setup lang="ts">
 /**
  * BaseIconTile — ô icon vuông bo góc có gradient (đầu form panel, option card, danh sách tính năng).
- * Port từ `wm-panel-icon` / `wm-export-tile` của MindAds.
+ * Port từ icon đầu panel / tile xuất dữ liệu của MindAds.
  *
  * Icon truyền qua slot (khuyến nghị) hoặc prop `icon` (chuỗi SVG/HTML, cùng quy ước với BaseButton).
  * Gradient lấy từ token --wx-gradient-tile-* nên dark mode + variant "flat" tự đổi.

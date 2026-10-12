@@ -23,7 +23,7 @@ const statusCode = `<BaseAvatar name="Online" status="online" />
 
 const ringCode = `<BaseAvatar size="lg" ring src="https://i.pravatar.cc/100?img=5" />
 <BaseAvatar size="lg" shape="square" src="https://i.pravatar.cc/100?img=8" />
-<BaseAvatar size="lg" shape="square" ring name="WM" />`
+<BaseAvatar size="lg" shape="square" ring name="MU" />`
 
 const props: PropRow[] = [
   { name: 'src', type: 'string | null', default: 'null', desc: 'URL ảnh đại diện. Nếu trống sẽ rơi về chữ viết tắt hoặc icon.' },
@@ -83,7 +83,7 @@ const props: PropRow[] = [
       <div class="row">
         <BaseAvatar size="lg" ring src="https://i.pravatar.cc/100?img=5" />
         <BaseAvatar size="lg" shape="square" src="https://i.pravatar.cc/100?img=8" />
-        <BaseAvatar size="lg" shape="square" ring name="WM" />
+        <BaseAvatar size="lg" shape="square" ring name="MU" />
       </div>
     </DemoBlock>
 

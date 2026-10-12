@@ -24,6 +24,10 @@ export const gradients = {
   iconTile: 'linear-gradient(135deg, #6366f1 0%, #3b82f6 50%, #06b6d4 100%)',
   /** Thanh loading "laser" */
   scanner: 'linear-gradient(to right, transparent, #06b6d4, #3b82f6)',
+  /** Gradient thương hiệu CHUẨN (cyan → xanh, 90°) — mã màu cố định, khớp --wx-gradient-brand */
+  brand: 'linear-gradient(90deg, #06b6d4 0%, #2583ff 45%, #1477f8 100%)',
+  /** Bản 96% opacity (glass / header đè nội dung) — khớp --wx-gradient-brand-glass */
+  brandGlass: 'linear-gradient(90deg, rgba(6, 182, 212, 0.96) 0%, rgba(37, 131, 255, 0.96) 45%, rgba(20, 119, 248, 0.96) 100%)',
 
   // ── Semantic Dialog Header Gradients ─────────────────
   /** Success dialogs */

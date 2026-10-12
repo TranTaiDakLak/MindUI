@@ -4,6 +4,25 @@
 
 MindUI is a Vue 3 component library + design system with a built-in showcase you can fork as a starting template. It ships components, composables, design tokens, and foundation styles that work in any Vue 3 environment: a regular web app, a mobile shell (Capacitor / Ionic / PWA), or a desktop wrapper (Wails / Tauri / Electron).
 
+## Brand gradient (canonical — copy exactly)
+
+The MindUI brand gradient runs cyan → blue, **left → right (90°)**. Every project built on MindUI uses these exact values — don't re-mix them.
+
+```css
+/* solid */
+background: linear-gradient(90deg, #06b6d4 0%, #2583ff 45%, #1477f8 100%);
+/* glass — 96% opacity, for headers/bars that sit over content */
+background: linear-gradient(90deg, rgba(6, 182, 212, 0.96) 0%, rgba(37, 131, 255, 0.96) 45%, rgba(20, 119, 248, 0.96) 100%);
+```
+
+| Stop | Hex | rgba (glass) |
+|------|-----|--------------|
+| 0% | `#06b6d4` | `rgba(6, 182, 212, 0.96)` |
+| 45% | `#2583ff` | `rgba(37, 131, 255, 0.96)` |
+| 100% | `#1477f8` | `rgba(20, 119, 248, 0.96)` |
+
+Inside MindUI use the tokens `var(--wx-gradient-brand)` / `var(--wx-gradient-brand-glass)` (TS: `gradients.brand` / `gradients.brandGlass`). White text on it is only ~2.4–4.2:1, so keep text on it large/bold or icon-only. Details: [DESIGN.md](DESIGN.md) §1.2.
+
 ## Highlights
 
 - **Vue 3 + TypeScript** — strict typing, Composition API, `<script setup>` SFCs

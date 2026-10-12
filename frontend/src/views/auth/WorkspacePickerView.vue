@@ -12,7 +12,7 @@ const search = ref('')
 const selectedId = ref<string | null>(null)
 const workspaces = ref([
   {
-    id: 'wm', name: 'MindUI', subdomain: 'mind', role: 'owner',
+    id: 'mind', name: 'MindUI', subdomain: 'mind', role: 'owner',
     members: 24, plan: 'pro', logoColor: '#2563eb', initial: 'M',
   },
   {

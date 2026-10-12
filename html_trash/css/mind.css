@@ -48,11 +48,14 @@
   --wx-border-focus: #007bff;
 
   /* Gradients */
+  /* Brand gradient CHUẨN (cyan → xanh, trái → phải) — mã màu cố định, khớp frontend tokens.css. Không tự pha lại. */
+  --wx-gradient-brand: linear-gradient(90deg, #06b6d4 0%, #2583ff 45%, #1477f8 100%);
+  --wx-gradient-brand-glass: linear-gradient(90deg, rgba(6, 182, 212, 0.96) 0%, rgba(37, 131, 255, 0.96) 45%, rgba(20, 119, 248, 0.96) 100%);
   --wx-gradient-bg: linear-gradient(135deg, #ecfeff 0%, #eff6ff 50%, #ecfeff 100%);
-  --wx-gradient-header: linear-gradient(135deg, #06b6d4 0%, #2563eb 100%);
-  --wx-gradient-cta: linear-gradient(135deg, #06b6d4 0%, #2563eb 100%);
-  --wx-gradient-button: linear-gradient(135deg, #0891b2 0%, #1d4ed8 100%);
-  --wx-gradient-text: linear-gradient(135deg, #06b6d4 0%, #2563eb 100%);
+  --wx-gradient-header: var(--wx-gradient-brand);
+  --wx-gradient-cta: var(--wx-gradient-brand);
+  --wx-gradient-button: linear-gradient(135deg, #0891b2 0%, #1d4ed8 100%);   /* giữ bản đậm: chữ trắng trên nút cần tương phản cao hơn brand gradient */
+  --wx-gradient-text: var(--wx-gradient-brand);
 
   /* Feedback */
   --wx-success-bg: #f0fdf4; --wx-success-text: #15803d; --wx-success-solid: #16a34a; --wx-success-border: #bbf7d0;

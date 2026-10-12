@@ -3,7 +3,8 @@
 > bộ UI kit Vue 3 cross-platform (web · mobile · desktop wrapper). tài liệu này là nguồn duy nhất (single source of truth) — gộp từ TEMPLATES.md + DESIGN-SYSTEM.md trước đây.
 >
 > ngôn ngữ: tiếng Việt sentence case (không UPPERCASE trừ acronym: API/UI/CTA/KPI/SLA/RBAC/SaaS/CRM/IoT).
-> font: **Inter**. brand default: **xanh dương `#2563eb`** (đã tham số hoá — consumer override bằng `setBrandColor()`, xem §1.8). gradient: 10 token `--wx-gradient-*`, đa số tham chiếu `--wx-brand-*` để cascade tự động.
+> font: **Inter**. brand default: **xanh dương `#2563eb`** (đã tham số hoá — consumer override bằng `setBrandColor()`, xem §1.8). gradient: các token `--wx-gradient-*`, đa số tham chiếu `--wx-brand-*` để cascade tự động.
+> **brand gradient chuẩn** (cyan → xanh, trái → phải, mã cố định — mọi dự án lấy đúng mã này): `linear-gradient(90deg, #06b6d4 0%, #2583ff 45%, #1477f8 100%)` · bản glass 96%: `linear-gradient(90deg, rgba(6, 182, 212, 0.96) 0%, rgba(37, 131, 255, 0.96) 45%, rgba(20, 119, 248, 0.96) 100%)` → token `--wx-gradient-brand` / `--wx-gradient-brand-glass`, xem §1.2.
 > cập nhật: 2026-05-19.
 
 ---
@@ -85,6 +86,8 @@ gradient — 10 token, các gradient brand-tied giờ tham chiếu `--wx-brand-*
 - `--wx-gradient-text` — text gradient cho heading hero *(brand-tied)*.
 - `--wx-gradient-divider` — divider mềm *(brand-tied)*.
 - `--wx-gradient-success/danger/warning` — KPI card status *(semantic — đổi qua `--wx-{name}-solid`)*.
+- `--wx-gradient-brand` — **gradient thương hiệu chuẩn**, cyan → xanh trái → phải: `linear-gradient(90deg, #06b6d4 0%, #2583ff 45%, #1477f8 100%)` *(mã màu cố định, không cascade — các dự án khác lấy đúng giá trị này)*.
+- `--wx-gradient-brand-glass` — bản 96% opacity của gradient trên: `linear-gradient(90deg, rgba(6, 182, 212, 0.96) 0%, rgba(37, 131, 255, 0.96) 45%, rgba(20, 119, 248, 0.96) 100%)` *(header/thanh đè nội dung, glass)*. Chi tiết stop + lưu ý tương phản: `DESIGN.md` §1.2.
 
 quy tắc gradient:
 - chỉ 1 element gradient lớn / màn hình. tránh "rainbow soup".

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 /**
  * BaseOptionCard — thẻ chọn hành động: icon-tile bên trái + 2 dòng chữ (tiêu đề / mô tả).
- * Port từ `wm-export-card` của MindAds (chọn định dạng xuất, chọn nguồn dữ liệu…).
+ * Port từ thẻ chọn định dạng xuất của MindAds (chọn định dạng xuất, chọn nguồn dữ liệu…).
  *
  * Là <button> thật: hover xanh nhạt, focus ring, trạng thái disabled/selected rõ ràng.
  * Slots: `icon` (thay nội dung tile), mặc định (tiêu đề), `description`, `trailing`.

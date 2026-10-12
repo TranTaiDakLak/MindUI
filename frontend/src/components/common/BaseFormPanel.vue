@@ -4,7 +4,7 @@ let _panelIdCounter = 0
 
 <script setup lang="ts">
 /**
- * BaseFormPanel — khuôn form/popover V3 của MindAds (`wm-panel`):
+ * BaseFormPanel — khuôn form/popover V3 của MindAds (panel form):
  *   head (icon-tile + tiêu đề + phụ đề + nút đóng/kbd)  /  body  /  foot (hint + nút).
  *
  * Dùng cho popover cấu hình (chọn cột, xuất dữ liệu, nạp lại…), panel nổi trong toolbar,

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 /**
- * BaseKbd — phím tắt dạng "keycap" (Esc, Ctrl, K…). Port từ `wm-kbd` của MindAds.
+ * BaseKbd — phím tắt dạng "keycap" (Esc, Ctrl, K…). Port từ keycap phím tắt của MindAds.
  * Dùng trong đầu form panel, command palette, tooltip hướng dẫn.
  */
 withDefaults(defineProps<{
