@@ -73,6 +73,7 @@ const SECTIONS: SidebarSection[] = [
       <AppSidebar
         :sections="SECTIONS"
         :active-id="activeId"
+        compact
         brand="MindUI"
         logo-src="/logo.png"
         brand-href="#/"

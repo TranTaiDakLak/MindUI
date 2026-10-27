@@ -6,6 +6,7 @@
  * Bố cục lấy từ ToolRail của MindAds:
  *  - item cao 42px, bo 8px; active = nền nhạt + chữ brand + vạch 3px bên trái
  *  - thu gọn 240px ⇄ 64px: tooltip nổi bên phải item, badge thu thành chấm số
+ *  - compact: rail 224px, item 36px cho các workspace có nhiều mục điều hướng
  *  - phím tắt Alt+B bật/tắt (bỏ qua khi đang gõ trong input)
  *  - nhãn nhóm viết hoa nhỏ; khi thu gọn đổi thành vạch ngăn
  *
@@ -43,6 +44,8 @@ const props = withDefaults(defineProps<{
   width?: number
   /** width khi collapsed (px) */
   collapsedWidth?: number
+  /** mật độ gọn cho workspace nhiều mục điều hướng */
+  compact?: boolean
   /** cho phép collapse */
   collapsible?: boolean
   /** id item active */
@@ -64,6 +67,7 @@ const props = withDefaults(defineProps<{
   hideBrand: false,
   width: 240,
   collapsedWidth: 64,
+  compact: false,
   collapsible: true,
   activeId: null,
   autoCollapseOnMobile: true,
@@ -107,8 +111,8 @@ watch(() => props.collapsed, (v) => { internalCollapsed.value = v })
 const expandedGroups = ref<Set<string>>(new Set())
 
 const cssVars = computed(() => ({
-  '--wx-sidebar-width': `${props.width}px`,
-  '--wx-sidebar-collapsed-width': `${props.collapsedWidth}px`,
+  '--wx-sidebar-width': `${props.compact ? Math.min(props.width, 224) : props.width}px`,
+  '--wx-sidebar-collapsed-width': `${props.compact ? Math.min(props.collapsedWidth, 56) : props.collapsedWidth}px`,
 }))
 
 /** auto collapse trên mobile */
@@ -244,7 +248,7 @@ const toggleLabel = computed(() => (collapsed.value ? 'Mở rộng menu' : 'Thu 
 <template>
   <aside
     class="wx-sidebar"
-    :class="{ 'wx-sidebar--collapsed': collapsed }"
+    :class="{ 'wx-sidebar--collapsed': collapsed, 'wx-sidebar--compact': compact }"
     :style="cssVars"
     :aria-expanded="!collapsed"
     data-part="root"
@@ -604,6 +608,35 @@ a.wx-sidebar__brand:focus-visible {
   gap: var(--wx-space-4);
   scrollbar-width: thin;
 }
+
+/* Compact density cho workspace có nhiều nhóm/mục điều hướng. */
+.wx-sidebar--compact .wx-sidebar__nav {
+  padding: 10px 8px 8px;
+  gap: var(--wx-space-3);
+}
+.wx-sidebar--compact .wx-sidebar__section { gap: 1px; }
+.wx-sidebar--compact .wx-sidebar__section-label {
+  margin-bottom: var(--wx-space-1);
+  padding: 0 10px;
+  font-size: 10px;
+}
+.wx-sidebar--compact .wx-sidebar__list { gap: 1px; }
+.wx-sidebar--compact .wx-sidebar__link {
+  min-height: 36px;
+  gap: 10px;
+  padding: 0 10px;
+  border-radius: 7px;
+  font-size: var(--wx-fs-13);
+}
+.wx-sidebar--compact .wx-sidebar__icon { width: 18px; height: 18px; }
+.wx-sidebar--compact .wx-sidebar__icon :deep(svg) { width: 16px; height: 16px; }
+.wx-sidebar--compact .wx-sidebar__link--child {
+  min-height: 30px;
+  padding-left: 10px;
+  gap: 8px;
+  font-size: var(--wx-fs-12);
+}
+.wx-sidebar--compact .wx-sidebar__footer { padding: 8px 8px 10px; }
 .wx-sidebar__nav::-webkit-scrollbar { width: 6px; }
 .wx-sidebar__nav::-webkit-scrollbar-thumb {
   background: var(--wx-border-default);

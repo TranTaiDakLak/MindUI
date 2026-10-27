@@ -198,6 +198,7 @@ const activeIcon = computed(() => {
         :sections="SECTIONS[section]"
         :active-id="activeId"
         :collapsed="collapsed"
+        compact
         :brand="cfg.brand"
         logo-src="/logo.png"
         brand-href="#/"

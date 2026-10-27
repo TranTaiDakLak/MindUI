@@ -116,6 +116,7 @@ const activeIcon = computed(() => allNavItems.find((i) => i.id === activeId.valu
         :sections="sections"
         :active-id="activeId"
         :collapsed="collapsed"
+        compact
         brand="MindUI"
         logo-src="/logo.png"
         brand-href="#/"

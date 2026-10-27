@@ -1,0 +1,88 @@
+# AGENTS.md — Central Contract
+
+> **Project:** MindUI · **Type:** Cross-platform Vue 3 UI library
+> **Stack:** Vue 3 (Composition API + `<script setup>` + TypeScript 5) · Pinia (optional) · Vue Router 4 (optional) · Vite 6 · CSS variables
+> **Targets:** Web · Mobile (Capacitor / Ionic / PWA) · Desktop (Wails / Tauri / Electron)
+> **Last updated:** 2026-05-07
+
+MindUI là bộ UI kit Vue 3 + Design System tách ra từ MindUI desktop. Mục tiêu: dùng được trên mọi nền tảng — Web app, Mobile shell, Desktop wrapper — mà không phụ thuộc backend cụ thể.
+
+## Brand gradient — mã màu chuẩn (đọc trước khi làm UI)
+
+Gradient thương hiệu MindUI: cyan → xanh, **trái → phải (90°)**. Mọi dự án dùng MindUI lấy **đúng** mã này, không tự pha lại để tránh lệch màu.
+
+```css
+/* đặc */
+background: linear-gradient(90deg, #06b6d4 0%, #2583ff 45%, #1477f8 100%);
+/* glass — 96% opacity, cho header/thanh đè lên nội dung */
+background: linear-gradient(90deg, rgba(6, 182, 212, 0.96) 0%, rgba(37, 131, 255, 0.96) 45%, rgba(20, 119, 248, 0.96) 100%);
+```
+
+| Stop | Hex | rgba (glass) |
+|------|-----|--------------|
+| 0% | `#06b6d4` | `rgba(6, 182, 212, 0.96)` |
+| 45% | `#2583ff` | `rgba(37, 131, 255, 0.96)` |
+| 100% | `#1477f8` | `rgba(20, 119, 248, 0.96)` |
+
+- Token: `var(--wx-gradient-brand)` / `var(--wx-gradient-brand-glass)` (`frontend/src/ui-system/foundations/tokens.css`) · TS: `gradients.brand` / `gradients.brandGlass`.
+- Trong MindUI dùng token, không hardcode lại mã; dự án ngoài MindUI thì copy nguyên chuỗi trên.
+- Chữ trắng trên gradient này chỉ ~2.4–4.2:1 → chỉ đặt chữ lớn/đậm hoặc icon; chữ nhỏ cần đọc dùng `--wx-gradient-primary`.
+- Chi tiết: `DESIGN.md` §1.2.
+
+## Stack versions
+
+| Package | Version |
+|---------|---------|
+| vite | ^6.4.x |
+| @vitejs/plugin-vue | ^5.2.x |
+| typescript | ^5.9.x |
+| vue-tsc | ^2.2.x |
+| vite-plugin-dts | ^4.5.x |
+| vue (peer) | ^3.2.0 |
+
+## Commands
+
+```bash
+cd frontend && npm install            # install deps
+cd frontend && npm run dev            # demo dev server (Vite)
+cd frontend && npm run typecheck      # vue-tsc --noEmit
+cd frontend && npm run build:app      # build demo → dist/
+cd frontend && npm run build:lib      # build publishable library → dist-lib/
+```
+
+> **Quality Gate:** `cd frontend && npm run typecheck && npm run build:lib` phải PASS trước khi claim done.
+
+## Library output (dist-lib/)
+
+| File | Mô tả |
+|------|-------|
+| `mind-ui.es.js` | ESM bundle |
+| `mind-ui.umd.js` | UMD bundle |
+| `ui.css` | Toàn bộ styles gộp (import qua `@mind/ui/style.css`) |
+| `index.d.ts` | TypeScript definitions (generated bởi vite-plugin-dts) |
+
+## Skill policy
+
+- **KHÔNG dùng gstack skills** trong dự án này. Đây là mọi skill có hậu tố `(gstack)` ở cuối description — ví dụ: `/ship`, `/qa`, `/qa-only`, `/browse`, `/review` (gstack), `/health`, `/ios-*`, `/design-*`, `/plan-*`, `/codex`, `/canary`, `/careful`, `/freeze`, `/guard`, `/unfreeze`, `/checkpoint`, `/context-save`, `/context-restore`, `/cso`, `/devex-review`, `/document-*`, `/scrape`, `/skillify`, `/setup-*`, `/sync-gbrain`, `/learn`, `/make-pdf`, `/office-hours`, `/retro`, `/landing-report`, `/land-and-deploy`, `/pair-agent`, `/open-gstack-browser`, `/connect-chrome`, `/benchmark`, `/benchmark-models`, `/autoplan`, `/gstack`, `/gstack-upgrade`, `/_gstack-command`. Không proactive suggest, không auto-invoke.
+- Nếu cần workflow tương đương (review, plan, ship, qa, …), ưu tiên `/superpowers` (plugin obra/superpowers).
+- Skill built-in của Codex vẫn dùng bình thường: `/review`, `/security-review`, `/init`, `/verify`, `/simplify`, `/loop`, `/schedule`, `/run`, `/Codex-api`, `/update-config`, `/keybindings-help`, `/fewer-permission-prompts`.
+
+## Rules
+
+1. **No secrets** — never read, print, or log .env, credentials, tokens, API keys
+2. **Cross-platform first** — không hard-code DOM/browser assumptions; kiểm tra `window`, `navigator` trước khi dùng. Desktop shell features (window drag, native dialogs) phải có fallback no-op cho web/mobile
+3. **Vietnamese UI** — labels, tooltips, messages mặc định bằng tiếng Việt; thiết kế cho i18n
+4. **Design system compliance** — dùng CSS variables từ `frontend/src/ui-system/foundations/tokens.css`, KHÔNG hardcode colors/spacing
+5. **TypeScript strict** — types cho tất cả props, emits, stores, composables
+6. **Tree-shakable** — named exports, không side effects ngoài CSS, peer-deps cho `vue`/`vue-router`/`pinia`
+7. **Verify before done** — chạy actual commands, paste output as evidence
+
+## Design system reference
+
+See `DESIGN.md` for: full token map, component inventory with props, composables, types, dark mode mechanism, and new-component checklist.
+
+## Library entry
+
+- `frontend/src/lib.ts` — library entry (exposed qua npm package)
+- `frontend/src/main.ts` — app entry (cho demo dev server)
+- Khi thêm component/composable mới, nhớ export từ `lib.ts` (qua `components/common/index.ts` hoặc `composables/index.ts`)
